@@ -1,4 +1,5 @@
 import React, { useState} from "react";
+import axios from "axios";
 import Bg6 from "../assets/imagens/bg6.jpg";
 
 
@@ -7,12 +8,25 @@ const RegisterForm = () =>{
     const [email ,setEmail] = useState('')
     const [senha, setSenha] = useState('')
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault();
-        const novoUsuario ={nome, email}
-        localStorage.setItem('user', JSON.stringify(novoUsuario) )
-        window.location.href='/'
-    }
+        try {
+            const response = await axios.post("http://localhost:5000/api/users" ,{
+                name: nome,
+                email,
+                password: senha
+            });
+ 
+            alert("Usuario cadastrado com sucesso!!" + `nome: ${response.data.name} email: ${response.data.email}`)
+            window.location.href = "/login"
+        } catch (error) {
+            if(error.response){
+                alert("Erro ao cadastrar usuario")
+            }else{
+                alert("Erro ao conectar ao servidor")
+            }
+        }
+       }
     return (
         <>
         <div

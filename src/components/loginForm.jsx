@@ -1,14 +1,31 @@
 import React, {useState} from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import bg5 from "../assets/imagens/bg5.jpg"
 
 const LoginForm = () =>{
-    const [email ,setEmail] = useState('')
-    const [senha, setSenha] = useState('')
-
-    const handleSubmit = (e) =>{
+    const [email ,setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+    const navigate = useNavigate();
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert(`Email: ${email} \nSenha:${senha}`)
-    }
+        try {
+            const response = await axios.post("http://localhost:5000/api/auth/login", {
+                email,
+                password: senha
+            });
+            const userData = response.data;
+            localStorage.setItem("user", JSON.stringify(userData));
+            alert("Usuário logado com sucesso!!");
+            navigate("/");
+        } catch (error) {
+            if (error.response) {
+                alert("Erro ao logar usuário: email ou senha incorretos");
+            } else {
+                alert("Erro ao conectar ao servidor");
+            }
+        }
+    };
     return (
         <>
         <div

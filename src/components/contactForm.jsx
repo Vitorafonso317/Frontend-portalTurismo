@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import BackgroundImage from "../assets/imagens/bg3.jpg";
+import axios from "axios";
 import { MdEmail } from "react-icons/md";
 import { MdOutlineDriveFileRenameOutline } from "react-icons/md";
 import { PiBird } from "react-icons/pi";
@@ -18,16 +19,25 @@ const ContactForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log(`Mensagem enviada ${formData.name} , ${formData.email}`);
-    console.log(`Mensagem: ${formData.message}`);
-
-    alert("Mensagem enviada com sucesso");
-
-    setFormData({ name: "", email: "", message: "" });
-  };
+    try {
+        const response = await axios.post("http://localhost:5000/api/contacts", {
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+        });
+        alert("menssagem cadastrada com sucesso!!" + `nome: ${formData.name} email: ${formData.email}`)
+        window.location.href = "/"
+    } catch (error) {
+        if (error.response) {
+            alert("Erro ao cadastrar usuário")
+        } else {
+            alert("erro ao conectar ao servidor")
+        }
+    }
+};
+  
 
   return (
     <>
