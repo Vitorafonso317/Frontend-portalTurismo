@@ -1,12 +1,18 @@
-# React + Vite
+Portal Turismo - React + Vite
+Este projeto utiliza React com o bundler Vite para garantir um ambiente de desenvolvimento rápido, com recarregamento a quente (HMR) e configuração simples.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sobre o Projeto
+Portal Turismo é um site para divulgação de pontos turísticos, com funcionalidades de login e cadastro de usuários. A aplicação foi desenvolvida usando React para a interface, e Vite para otimização do build e experiência de desenvolvimento ágil.
 
-Currently, two official plugins are available:
+Plugins e Ferramentas
+O projeto pode utilizar os seguintes plugins para React no Vite:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+@vitejs/plugin-react: plugin oficial que usa Babel para Fast Refresh e suporte JSX.
 
-## Expanding the ESLint configuration
+@vitejs/plugin-react-swc: alternativa que usa o compilador SWC para builds mais rápidos e suporte ao Fast Refresh.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Regras de Lint e Qualidade de Código
+Para projetos de produção, é recomendável configurar ESLint com regras específicas para React e JavaScript/TypeScript. Se desejar, pode-se integrar o TypeScript ao projeto para uma melhor análise estática e lint com suporte a tipos usando typescript-eslint.
+
+Para isso, confira o template oficial React + TypeScript do Vite:
+https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts

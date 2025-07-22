@@ -1,37 +1,51 @@
+// Importa React e os hooks necessários
 import React, { useState, useEffect } from 'react';
 
+// Componente funcional Navbar
 const Navbar = () => {
+    // Estado para controlar se o menu mobile está aberto
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // Estado para verificar se o usuário está autenticado
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    // Estado para armazenar o termo de busca digitado
     const [searchTerm, setSearchTerm] = useState("");
 
+    // Verifica se o usuário está logado ao carregar o componente
     useEffect(() => {
         const user = localStorage.getItem('user');
-        setIsAuthenticated(!!user);
+        setIsAuthenticated(!!user); // converte para booleano
     }, []);
 
+    // Alterna o menu no modo mobile
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    // Função para logout
     const handleLogout = () => {
-        localStorage.removeItem('user');
-        setIsAuthenticated(false);
-        window.location.href = '/';
+        localStorage.removeItem('user'); // remove o usuário do localStorage
+        setIsAuthenticated(false); // atualiza estado
+        window.location.href = '/'; // redireciona para a home
     };
 
+    // Função executada ao enviar o formulário de busca
     const handleSearch = (e) => {
-        e.preventDefault();
-        // Ação da busca (você pode redirecionar ou filtrar resultados aqui)
+        e.preventDefault(); // previne reload
         alert(`Buscando por: ${searchTerm}`);
+        // Aqui você pode adicionar redirecionamento ou lógica de busca real
     };
 
+    // Links do menu (usados no desktop e no mobile)
     const menuLinks = (
         <>
             <a href="/" className="text-white hover:text-[#354225] transition duration-300 text-lg font-medium">Home</a>
             <a href="/about" className="text-white hover:text-[#354225] transition duration-300 text-lg font-medium">Sobre</a>
             <a href="/service" className="text-white hover:text-[#354225] transition duration-300 text-lg font-medium">Serviços</a>
             <a href="/contact" className="text-white hover:text-[#354225] transition duration-300 text-lg font-medium">Contato</a>
+
+            {/* Condicional: se logado, mostra perfil e logout; senão, mostra login */}
             {isAuthenticated ? (
                 <>
                     <a href="/profile" className="text-white hover:text-[#354225] transition duration-300 text-lg font-medium">Perfil</a>
@@ -47,16 +61,17 @@ const Navbar = () => {
         <nav className="fixed top-0 left-0 w-full z-50 bg-gradient-to-t from-[#354225] via-[#1b2313] to-[#000400] text-white shadow-md">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
+
                     {/* Logo */}
                     <div className="flex-shrink-0">
                         <a href="/" className="text-2xl font-bold text-white">Nova Serra Verde</a>
                     </div>
 
-                    {/* Menu Desktop + Barra de Pesquisa */}
+                    {/* Menu Desktop + Busca */}
                     <div className="hidden md:flex items-center space-x-6">
                         {menuLinks}
 
-                        {/* Barra de pesquisa (Desktop) */}
+                        {/* Barra de busca para desktop */}
                         <form onSubmit={handleSearch} className="flex items-center space-x-2">
                             <input
                                 type="text"
@@ -74,13 +89,15 @@ const Navbar = () => {
                         </form>
                     </div>
 
-                    {/* Botão Menu Mobile */}
+                    {/* Ícone do menu mobile */}
                     <div className="md:hidden">
                         <button onClick={toggleMenu} className="text-white focus:outline-none">
                             <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                 {isMenuOpen ? (
+                                    // Ícone de "X" quando o menu está aberto
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 ) : (
+                                    // Ícone de menu quando está fechado
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                                 )}
                             </svg>
@@ -89,12 +106,12 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Menu Mobile + Barra de Pesquisa */}
+            {/* Menu mobile visível apenas se aberto */}
             {isMenuOpen && (
                 <div className="md:hidden bg-gradient-to-t from-green-400 via-green-600 to-green-800 px-4 py-4 space-y-4 flex flex-col">
                     {menuLinks}
 
-                    {/* Barra de Pesquisa (Mobile) */}
+                    {/* Barra de busca para mobile */}
                     <form onSubmit={handleSearch} className="flex flex-col space-y-2">
                         <input
                             type="text"
@@ -116,5 +133,5 @@ const Navbar = () => {
     );
 };
 
+// Exporta o componente para uso em outras páginas
 export default Navbar;
-
