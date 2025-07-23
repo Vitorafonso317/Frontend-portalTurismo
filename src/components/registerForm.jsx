@@ -71,7 +71,7 @@ const RegisterForm = () =>{
                             onChange={(e) => setSenha(e.target.value)}
                             required
                             className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-green-500 text-sm sm:text-base mb-6"
-                            placeholder="Digite seu nome"
+                            placeholder="Digite sua senha"
                         />
                     </div>
                     

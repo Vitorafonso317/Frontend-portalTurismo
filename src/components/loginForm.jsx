@@ -58,7 +58,7 @@ const LoginForm = () =>{
                             onChange={(e) => setSenha(e.target.value)}
                             required
                             className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-green-500 text-sm sm:text-base mb-6"
-                            placeholder="Digite seu nome"
+                            placeholder="Digite sua senha"
                         />
                     </div>
                     <button type="submit" className="w-full bg-[#354225] text-white py-3  hover:bg-[#1b2313] transition pt-3 rounded-2xl">

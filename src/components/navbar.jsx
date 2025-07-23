@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,10 +29,12 @@ const Navbar = () => {
 
     const menuLinks = (
         <>
-            <a href="/" className="text-white hover:text-[#354225] transition duration-300 text-lg font-medium">Home</a>
-            <a href="/about" className="text-white hover:text-[#354225] transition duration-300 text-lg font-medium">Sobre</a>
-            <a href="/service" className="text-white hover:text-[#354225] transition duration-300 text-lg font-medium">Serviços</a>
-            <a href="/contact" className="text-white hover:text-[#354225] transition duration-300 text-lg font-medium">Contato</a>
+                        <Link to="/" className="text-white hover:text-[#354225] text-lg font-medium">Home</Link>
+            <Link to="/about" className="text-white hover:text-[#354225] text-lg font-medium">Sobre</Link>
+            <Link to="/service" className="text-white hover:text-[#354225] text-lg font-medium">Serviços</Link>
+            <Link to="/contact" className="text-white hover:text-[#354225] text-lg font-medium">Contato</Link>
+            <Link to="/profile" className="text-white hover:text-[#354225] text-lg font-medium">Perfil</Link>
+
             {isAuthenticated ? (
                 <>
                     <a href="/profile" className="text-white hover:text-[#354225] transition duration-300 text-lg font-medium">Perfil</a>
@@ -100,7 +103,7 @@ const Navbar = () => {
                             type="text"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            placeholder="Buscar..."
+                            placeholder="..."
                             className="px-3 py-2 rounded-md text-black bg-white focus:outline-none focus:ring-2 focus:ring-green-300"
                         />
                         <button
