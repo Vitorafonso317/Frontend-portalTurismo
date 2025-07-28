@@ -93,7 +93,11 @@ const RegisterForm = () => {
                             value={senha}
                             onChange={(e) => setSenha(e.target.value)} // Atualiza o estado da senha
                             required
+<<<<<<< HEAD
                             className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-green-500"
+=======
+                            className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-green-500 text-sm sm:text-base mb-6"
+>>>>>>> 00bff297de619e5c52e0c18e72134483812b78aa
                             placeholder="Digite sua senha"
                         />
                     </div>

@@ -5,6 +5,7 @@ import ContactPage from "./pages/ContactPage"
 import AboutPage from "./pages/AboutPage"
 import LoginPage from "./pages/loginPage"
 import RegisterPage from "./pages/registerPage"
+import Profilepage from "./pages/profilepage"
 import SaibaMais from "./pages/SaibaMais"
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
             <Route path="/login" element={<LoginPage/>} />  
             <Route path="/register" element={<RegisterPage/>} />  
             <Route path="/sobre" element={<SaibaMais/>} />  
-                            
+            <Route path="/profile" element={<Profilepage/>} />
           </Routes>
     </Router>
   )
