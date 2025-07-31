@@ -41,21 +41,12 @@ const Navbar = () => {
     // Links do menu (usados no desktop e no mobile)
     const menuLinks = (
         <>
-<<<<<<< HEAD
             <a href="/" className="text-white hover:text-[#354225] transition duration-300 text-lg font-medium">Home</a>
             <a href="/about" className="text-white hover:text-[#354225] transition duration-300 text-lg font-medium">Sobre</a>
             <a href="/service" className="text-white hover:text-[#354225] transition duration-300 text-lg font-medium">Serviços</a>
             <a href="/contact" className="text-white hover:text-[#354225] transition duration-300 text-lg font-medium">Contato</a>
 
             {/* Condicional: se logado, mostra perfil e logout; senão, mostra login */}
-=======
-                        <Link to="/" className="text-white hover:text-[#354225] text-lg font-medium">Home</Link>
-            <Link to="/about" className="text-white hover:text-[#354225] text-lg font-medium">Sobre</Link>
-            <Link to="/service" className="text-white hover:text-[#354225] text-lg font-medium">Serviços</Link>
-            <Link to="/contact" className="text-white hover:text-[#354225] text-lg font-medium">Contato</Link>
-            <Link to="/profile" className="text-white hover:text-[#354225] text-lg font-medium">Perfil</Link>
-
->>>>>>> 00bff297de619e5c52e0c18e72134483812b78aa
             {isAuthenticated ? (
                 <>
                     <a href="/profile" className="text-white hover:text-[#354225] transition duration-300 text-lg font-medium">Perfil</a>
